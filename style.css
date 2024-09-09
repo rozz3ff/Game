@@ -1,0 +1,89 @@
+.game {
+    position: relative; 
+    /* ширина игровой области */
+    width: 900px;
+    /* высота игровой области */
+    height: 200px;
+    /* рамка серого цвета и отступы вокруг неё */
+    border: 1px solid rgb(122, 122, 122);
+    /* автоматические отступы */
+    margin: auto;
+  }
+
+  #chel {
+    /* ширина и высота динозаврика */
+    width: 40px;
+    height: 50px;
+    /* путь к изображению динозаврика */
+    background-image: url(img/chel.png);
+    background-size: contain; /* Масштабируем изображение, сохраняя его пропорции */
+    background-repeat: no-repeat; /* Отключаем повторение изображения */
+    /* ширина и высота подложки */
+    background-size: 40px 50px;
+    /* относительное позиционирование */
+    position: absolute;
+    bottom: 0px; /* Привязка к нижнему краю контейнера */
+    left: 80px; /* Привязка к левому краю контейнера */
+    z-index: 10; /* Устанавливаем высокое значение z-index */
+  }
+
+  @keyframes block {
+    /* начальная позиция кактуса (справа) */
+    0% {
+      left: 870px;
+    }
+    /* конечная позиция кактуса (слева, за пределами экрана) */
+    100% {
+      left: -20px;
+    }
+  }
+/* Увеличиваем размер счета */
+#score {
+  font-size: 24px;
+  color: black;
+  position: absolute; /* Абсолютное позиционирование */
+  top: 10px; /* Расположение сверху в пределах контейнера .game */
+  left: 10px; /* Расположение слева в пределах контейнера .game */
+  z-index: 10; /* Счёт на переднем плане */
+}
+
+/* Маленький кактус */
+#small-bottle {
+  width: 20px;
+  height: 40px;
+  background-image: url("img/bottle.png");
+  background-size: contain; /* Масштабируем изображение, сохраняя его пропорции */
+  background-repeat: no-repeat; /* Отключаем повторение изображения */
+  background-size: 20px 40px;
+  position: absolute;
+  bottom: 0px;
+  animation: block 2s infinite linear;
+  display: none; /* Изначально скрыт */
+}
+
+/* Большой кактус */
+#big-bottle {
+  width: 20px;
+  height: 60px;
+  background-image: url("img/bottle.png");
+  background-size: contain; /* Масштабируем изображение, сохраняя его пропорции */
+  background-repeat: no-repeat; /* Отключаем повторение изображения */
+  background-size: 20px 60px;
+  position: absolute;
+  bottom: 0px;
+  animation: block 2s infinite linear;
+  display: none; /* Изначально скрыт */
+}
+
+/* Плавный прыжок и приземление */
+.jump {
+  animation: jump 0.6s ease-in-out; /* Плавная анимация прыжка */
+}
+
+@keyframes jump {
+  0% { top: 150px; }
+  30% { top: 100px; }
+  50% { top: 50px; }
+  70% { top: 100px; }
+  100% { top: 150px; }
+}
